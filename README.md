@@ -10,7 +10,7 @@ The CLI creates the latest version of the Next.js app with my favorite configura
 ## Install
 
 ```bash
-cd my-create-next-app-cli && npm install 
+cd my-create-next-app-cli && npm install
 ```
 
 ## Run the cli

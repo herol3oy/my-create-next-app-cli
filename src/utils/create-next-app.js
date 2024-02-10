@@ -33,9 +33,7 @@ export const createNextApp = async (projectName) => {
     const installDependenciesCommand = `
     cd ${projectName} &&
     npm install -D prettier prettier-plugin-tailwindcss eslint-plugin-simple-import-sort husky lint-staged &&
-    npx husky install &&
-    npm pkg set scripts.prepare="husky install" &&
-    npx husky add .husky/pre-commit "npx lint-staged"
+    npx husky init
   `;
     const installDependenciesProcess = spawn(
       "sh",
@@ -62,6 +60,8 @@ export const createNextApp = async (projectName) => {
 
     await fs.writeFile(`${projectPath}prettier.config.cjs`, prettierConfig);
     await fs.writeFile(`${projectPath}.eslintrc.json`, esLintConfig);
+    await fs.writeFile(`${projectPath}.husky/pre-commit`,'npx lint-staged\n')
+
     console.log("Prettier and ESLint configurations created successfully!");
 
     const packageJsonPath = `${projectPath}package.json`;
